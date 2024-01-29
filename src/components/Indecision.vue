@@ -3,16 +3,20 @@
     <img :src='img' @load="handleImageLoad">
   </div>
   <div class='bg-dark'></div>
+  
   <div class='indecision-container'>
     <input v-model='question' type='text' placeholder='Hazme una pregunta'>
-    <p v-if="!isValidQuestion">Recuerda terminar con un sigo de interrogación (?)</p>
-    <div v-if="isValidQuestion && !error">
-      <h2>{{ question }}</h2>
-      <h1>{{ answer }}</h1>
-    </div>
-    <div v-else> 
-      <!--Error-->
-      <h2>{{ answer }}</h2>
+    
+    <div class="answer-container">
+      <p v-if="!isValidQuestion">Recuerda terminar con un sigo de interrogación (?)</p>
+      <div v-if="isValidQuestion && !error">
+        <h2>{{ question }}</h2>
+        <h1>{{ answer }}</h1>
+      </div>
+      <div v-else> 
+        <!--Error-->
+        <h2>{{ answer }}</h2>
+      </div>
     </div>
   </div>
 </template>
@@ -51,7 +55,6 @@ export default {
       }
     },
     handleImageLoad() {
-      console.log('deberia de cambiar')
       return this.loading = false
     }
   },
@@ -80,14 +83,21 @@ export default {
     position: fixed;
     top: 0px;
     width: 100vw;
+    overflow: hidden;
   }
 
   .bg-dark {
-    background-color: rgba(0, 0, 0, 0.55);
+    background-color: rgba(0, 0, 0, 0.60);
   }
   .indecision-container {
     position: relative;
     z-index: 99;
+    overflow: hidden;
+  }
+
+  .answer-container {
+    margin-top: 1rem;
+    position: relative;
   }
     
   input {
@@ -95,6 +105,7 @@ export default {
     padding: 10px 15px;
     border-radius: 5px;
     border: none;
+    scale: 1.2;
   }
     
   input:focus {
