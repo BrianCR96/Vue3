@@ -105,7 +105,6 @@ export default {
     padding: 10px 15px;
     border-radius: 5px;
     border: none;
-    scale: 1.2;
   }
     
   input:focus {
